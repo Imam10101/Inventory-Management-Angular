@@ -1,0 +1,52 @@
+<div class="col-md-12">
+    <h4>Vendor List</h4>
+    <div class="example-button-container">
+        <button mat-mini-fab color="primary" (click)="openDialog()"
+        aria-label="Example icon button with a plus one icon">
+          <mat-icon>plus_one</mat-icon>
+        </button>
+      </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td>Vendor Id</td>
+            <td>Vendor Name</td>
+            <td>Vendor Contact</td>
+            <td>Vendor Address</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+      @for (item of dataList; track item.VendorId; let i = $index)
+      {
+      <tr>
+        <td>
+            {{item.VendorId}}
+        </td>
+       <td>
+        {{item.VendorName}}
+       </td>
+       <td>
+        {{item.VendorContact}}
+       </td>
+       <td>
+        {{item.VendorAddress}}
+       </td>
+   
+       <td>
+        <div class="example-button-container">
+          <button mat-mini-fab color="primary" (click)="openDialog(item.VendorId)"
+          aria-label="Example icon button with a plus one icon">
+            <mat-icon>edit</mat-icon>
+          </button> ||<button mat-mini-fab color="primary" (click)="delete(item.VendorId)"
+          aria-label="Example icon button with a plus one icon">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+       </td>
+      </tr>
+      }
+    </tbody>
+</table>
+    
+  </div>

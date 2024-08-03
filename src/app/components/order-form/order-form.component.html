@@ -1,0 +1,65 @@
+<div class="container">
+  <h2 class="mt-3" *ngIf="isEditMode">Edit Order</h2>
+  <h2 class="mt-3" *ngIf="!isEditMode">Create Order</h2>
+  <form class="mt-3" (ngSubmit)="saveOrder()" #orderForm="ngForm">
+    <div class="mb-3">
+      <label for="customerId" class="form-label">Customer:</label>
+      <select id="customerId" [(ngModel)]="order.CustomerId" name="customerId" class="form-control" required>
+        <option selected disabled>Select a customer</option>
+        <option *ngFor="let customer of customers" [value]="customer.CustomerId">{{ customer.CustomerName }}</option>
+      </select>
+      <div *ngIf="orderForm.controls['customerId']?.invalid && orderForm.controls['customerId']?.touched" class="text-danger">
+        Customer is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="orderDate" class="form-label">Order Date:</label>
+      <input id="orderDate" [(ngModel)]="order.OrderDate" name="orderDate" class="form-control" type="date" required (change)="onOrderDateChange()">
+      <div *ngIf="orderForm.controls['orderDate']?.invalid && orderForm.controls['orderDate']?.touched" class="text-danger">
+        Order date is required.
+      </div>
+    </div>
+    <div class="mb-3 form-check">
+      <input id="isEmergency" [(ngModel)]="order.IsEmergency" name="isEmergency" class="form-check-input" type="checkbox" (change)="onIsEmergencyChange()">
+      <label class="form-check-label" for="isEmergency">Is Emergency</label>
+    </div>
+    
+    <div class="mb-3">
+      <h3>Order Details</h3>
+      <button type="button" class="btn btn-primary" (click)="addOrderDetail()">Add Detail</button>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let detail of order.OrderDetails; let i = index">
+            <td>
+              <select [(ngModel)]="detail.PrdId" name="prdId-{{i}}" class="form-control" required>
+                <option value="" disabled>Select a product</option>
+                <option *ngFor="let product of products" [value]="product.ProductId">{{ product.ProductName }}</option>
+              </select>
+              <div *ngIf="orderForm.controls['prdId-{{i}}']?.invalid && orderForm.controls['prdId-{{i}}']?.touched" class="text-danger">
+                Product is required.
+              </div>
+            </td>
+            <td>
+              <input [(ngModel)]="detail.Qty" name="qty-{{i}}" class="form-control" type="number" min="1" required>
+              <div *ngIf="orderForm.controls['qty-{{i}}']?.invalid && orderForm.controls['qty-{{i}}']?.touched" class="text-danger">
+                Quantity must be a positive number.
+              </div>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="removeOrderDetail(i)">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <button type="submit" class="btn btn-success" [disabled]="orderForm.invalid">Save</button>
+  </form>
+</div>

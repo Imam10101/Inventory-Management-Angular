@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Enter Vendor Name</h2>
+<form (ngSubmit)="SaveData()"> 
+<mat-dialog-content>
+  <input matInput  hidden 
+  [(ngModel)]="vendor.VendorId" name="VendorId">
+  <mat-form-field>
+    <mat-label>Vendor Name</mat-label>
+    <input matInput  placeholder="Vendor name" 
+    [(ngModel)]="vendor.VendorName" name="VendorName">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Vendor Contact</mat-label>
+    <input matInput  placeholder="VendorContact" 
+    [(ngModel)]="vendor.VendorContact" name="VendorContact">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>VendorAddress</mat-label>
+    <input matInput  placeholder="VendorAddress" 
+    [(ngModel)]="vendor.VendorAddress" name="VendorAddress">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button type="submit" > {{buttonText}} </button>
+  <button mat-button mat-dialog-close  >Close</button>
+</mat-dialog-actions>
+</form>
+

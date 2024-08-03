@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Enter Return Reason</h2>
+<form (ngSubmit)="SaveData()"> 
+<mat-dialog-content>
+  <input matInput  hidden 
+  [(ngModel)]="returns.ReturnId" name="ReturnId">
+
+  <mat-form-field>
+    <mat-label>Product Id</mat-label>
+  <input  matInput  placeholder="ProductId" 
+  [(ngModel)]="returns.ProductId" name="ProductId">
+ </mat-form-field>
+ <br>
+ <mat-form-field>
+    <mat-label>Customer Id</mat-label>
+  <input  matInput  placeholder="CustomerId" 
+  [(ngModel)]="returns.CustomerId" name="CustomerId">
+ </mat-form-field>
+ <br>
+  <mat-form-field>
+    <mat-label>Return Reason</mat-label>
+    <input matInput  placeholder="ReturnReason" 
+    [(ngModel)]="returns.ReturnReason" name="ReturnReason">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Return Date</mat-label>
+    <input matInput type="date"  placeholder="ReturnDate" 
+    [(ngModel)]="returns.ReturnDate" name="ReturnDate">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button type="submit" > {{buttonText}} </button>
+  <button mat-button mat-dialog-close  >Close</button>
+</mat-dialog-actions>
+</form>
+

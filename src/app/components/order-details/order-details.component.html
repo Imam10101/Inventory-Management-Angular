@@ -1,0 +1,63 @@
+<div class="container mt-4">
+  <div *ngIf="order">
+    <h2>Order Details</h2>
+    <div class="card mb-3">
+      <div class="card-body">
+        <p class="card-text"><strong>Customer Name:</strong> {{ customerName }}</p>
+        <p class="card-text"><strong>Order Date:</strong> {{ order.OrderDate | date }}</p>
+        <p class="card-text"><strong>Order Price:</strong> {{ order.TotalPrice | currency }}</p>
+        <p class="card-text"><strong>Is Emergency:</strong> {{ order.IsEmergency }}</p>
+        <p class="card-text"><strong>Delivery Date:</strong> {{ order.DeliveryDate | date }}</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Order Details</h3>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th>Product Name</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let detail of order.OrderDetails">
+              <td>{{ productNames[detail.PrdId] }}</td>
+              <td>{{ detail.Qty }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <button class="btn btn-primary mt-3" (click)="goBackToList()">Back to List</button>
+    <button class="btn btn-success mt-3" (click)="confirmOrder()">Confirm</button>
+  </div>
+</div>
+
+<!-- Modal for entering Sale details -->
+<div class="modal" tabindex="-1" role="dialog" *ngIf="showModal == true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Sale</h5>
+        <button type="button" class="close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="submitSale()">
+          <div class="form-group">
+            <label for="isDeliver">Is Deliver:</label>
+            <input type="checkbox" id="isDeliver" [(ngModel)]="isDeliver" name="isDeliver" class="form-check-input">
+          </div>
+          <div class="form-group">
+            <label for="saleDate">Sale Date:</label>
+            <input type="date" id="saleDate" [(ngModel)]="saleDate" name="saleDate" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

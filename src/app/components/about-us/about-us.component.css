@@ -1,0 +1,134 @@
+
+nav{
+    background: var(--primary);
+}
+#aboutSection{
+  height: 100%;
+  width: 100%;
+  background: white;
+  padding-top: 90px;
+}
+
+/* #section1{
+  background: url('/assets/img/about.png');
+  height: 100vh;
+  margin-top: 90px;
+} */
+.headding{
+  font-weight: 600;
+  font-size: 50px;
+  margin-top: 140px;
+}
+
+.moreBtn{
+  padding: 13px 80px;
+  border-radius: 5px;
+  border: none;
+  background: var(--primary);
+  font-size: 20px;
+  margin-top: 10px;
+  color:white;
+  text-decoration: none;  
+}
+
+#section2 .row{
+  display: flex;
+  justify-content: center;
+}
+#section2 .col{
+  justify-content: center;
+  box-shadow: 1px 3px 60px gray;
+  margin: 50px;
+  text-align: center;
+}
+
+#section2 .col:hover{
+  box-shadow: 1px 3px 80px black;
+}
+
+
+#section2 i{
+  font-size: 20px;
+  color: black;
+  padding: 10px;
+  text-align: center;
+}
+.moreBtn:hover{
+  background:white;
+  color:var(--primary);
+  border: 1px solid var(--primary);
+}
+#userImg{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#messageBtn{
+    position: fixed;
+    background:var(--primary);
+    top: 90%;
+    right: 0px;
+    padding: 5px 34px;
+    border-radius: 30px;
+    border:1px solid white;
+}
+
+/* ====================================================================== */
+
+/* Full-width input fields */
+#message input[type=text], input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Set a style for all buttons */
+  #message button {
+    background-color: var(--primary);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+
+
+
+  /* Modal Content/Box */
+
+  #message .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% f  rom the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width:440px; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button (x) */
+  #message .close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  #message .close:hover,
+  #message .close:focus {
+    color: #6e2cf3;
+    cursor: pointer;
+  }
+  
+  /* Add Zoom Animation */
+  #message .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
+  
+ 

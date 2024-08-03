@@ -1,0 +1,28 @@
+
+<div class="container mt-4">
+    <h2>Purchase List</h2>
+    <button class="btn btn-primary mb-3" (click)="createPurchase()">Create Purchase</button>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Vendor Name</th>
+          <th>Purchase Date</th>
+          <th>Total Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pur of purchases">
+          <td>{{ vendorNames[pur.VendorId]}}</td>
+          <td>{{ pur.PurchaseDate | date }}</td>
+          <td>{{ pur.TotalPrice | currency }}</td>
+          <td>
+            <button class="btn btn-sm btn-info mr-1" (click)="editPurchase(pur.PurchaseId)">Edit</button>
+            &nbsp;<button class="btn btn-sm btn-primary" (click)="viewDetails(pur.PurchaseId)">Details</button>
+            &nbsp;<button class="btn btn-sm btn-danger" (click)="deletePurchase(pur.PurchaseId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

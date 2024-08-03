@@ -1,0 +1,90 @@
+<!-- <div class="list row p-5">
+    <div class="col-md-12">
+        <h4>Category List</h4>
+        <div class="flex justify-center">
+            <button class="mb-3 mt-3 ml-5" mat-raised-button  routerLink="/add-products" >Add Product</button>
+          </div>
+        <table class="table table-danger">
+            <thead>
+                <tr>
+                    <th>Product Id</th>
+                    <th>Category Id</th>
+                    <th>Product Name</th>
+                    <th>Product Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>ReorderQty</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(product of productlist; track product.ProductId){
+                    <tr>
+                        <td>{{product.ProductId}}</td>
+                        <td>{{product.CategoryId}}</td>
+                        <td>{{product.ProductName}}</td>
+                        <td>{{product.Description}}</td>
+                        <td>{{product.Price}}</td>
+                        <td>{{product.Quantity}}</td>
+                        <td>{{product.ReorderQty}}</td>
+
+                        <td>
+                            <button (click)="Edit(product.ProductId)" class="btn btn-primary ">Edit</button> |
+                            <button (click)="Delete(product.ProductId)"  class="btn btn-warning">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div> -->
+
+<div class="col-md-12">
+    <h4>Product List</h4>
+    <div class="example-button-container">
+        <button mat-mini-fab color="primary" (click)="openDialog()"
+        aria-label="Example icon button with a plus one icon">
+          <mat-icon>plus_one</mat-icon>
+        </button>
+      </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td>Product Id</td>
+            <td>Category Id</td>
+            <td>Product Name</td>
+            <td>Description</td>
+            <td>Price</td>
+            <td>Quantity</td>
+            <td>ReorderQty</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+      @for (item of productlist; track item.ProductId; let i = $index)
+      {
+      <tr>
+       <td> {{item.ProductId}}</td>
+       <td> {{item.CategoryId}}</td>
+       <td>{{item.ProductName}} </td>
+       <td>{{item.Description}}</td>
+       <td>{{item.Price}}</td>
+       <td>{{item.Quantity}}</td>
+       <td>{{item.ReorderQty}}</td>
+       <td>
+        <div class="example-button-container">
+          <button mat-mini-fab color="primary" (click)="openDialog(item.ProductId)"
+          aria-label="Example icon button with a plus one icon">
+            <mat-icon>edit</mat-icon>
+          </button> ||<button mat-mini-fab color="primary" (click)="delete(item.ProductId)"
+          aria-label="Example icon button with a plus one icon">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+       </td>
+      </tr>
+      }
+    </tbody>
+</table>
+    
+  </div>

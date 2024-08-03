@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Enter Category Name</h2>
+<form (ngSubmit)="SaveData()"> 
+<mat-dialog-content>
+  <input matInput  hidden 
+  [(ngModel)]="category.CategoryId" name="CategoryId">
+  <mat-form-field>
+    <mat-label>Category Name</mat-label>
+    <input matInput  placeholder="Category name" 
+    [(ngModel)]="category.CategoryName" name="CategoryName">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput  placeholder="Description" 
+    [(ngModel)]="category.Description" name="Description">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button type="submit" > {{buttonText}} </button>
+  <button mat-button mat-dialog-close  >Close</button>
+</mat-dialog-actions>
+</form>
+

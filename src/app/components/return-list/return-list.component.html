@@ -1,0 +1,47 @@
+<div class="col-md-12">
+    <h4>Return List</h4>
+    <div class="example-button-container">
+        <button mat-mini-fab color="primary" (click)="openDialog()"
+        aria-label="Example icon button with a plus one icon">
+          <mat-icon>plus_one</mat-icon>
+        </button>
+      </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td>Return Id</td>
+            <td>Product Id</td>
+            <td>Customer Id</td>
+            <td>Return Reason</td>
+            <td>Return Date</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+      @for (item of dataList; track item.ReturnId; let i = $index)
+      {
+      <tr>
+        <td> {{item.ReturnId}}</td>
+       <td>{{item.ProductId}}</td>
+       <td> {{item.CustomerId}} </td>
+       <td> {{item.ReturnReason}} </td>
+       <td> {{item.ReturnDate}} </td>
+   
+       <td>
+        <div class="example-button-container">
+          <button mat-mini-fab color="primary" (click)="openDialog(item.ReturnId)"
+          aria-label="Example icon button with a plus one icon">
+            <mat-icon>edit</mat-icon>
+          </button> ||<button mat-mini-fab color="primary" (click)="delete(item.ReturnId)"
+          aria-label="Example icon button with a plus one icon">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+       </td>
+      </tr>
+      }
+    </tbody>
+</table>
+    
+  </div>
+  

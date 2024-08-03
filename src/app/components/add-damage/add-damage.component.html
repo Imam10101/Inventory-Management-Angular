@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Enter Damage Details</h2>
+<form (ngSubmit)="SaveData()"> 
+<mat-dialog-content>
+  <input matInput  hidden 
+  [(ngModel)]="damage.DamageId" name="DamageId">
+  <mat-form-field>
+    <mat-label>Product Id</mat-label>
+    <input matInput  placeholder="ProductId" 
+    [(ngModel)]="damage.ProductId" name="ProductId">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Damage Description</mat-label>
+    <input matInput  placeholder="DamageDescription" 
+    [(ngModel)]="damage.DamageDescription" name="DamageDescription">
+  </mat-form-field>
+
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button type="submit" > {{buttonText}} </button>
+  <button mat-button mat-dialog-close  >Close</button>
+</mat-dialog-actions>
+</form>
+

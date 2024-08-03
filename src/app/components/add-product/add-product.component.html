@@ -1,0 +1,118 @@
+<!-- <div>
+    <div style="text-align: center; width: 1050px; height: 50px; margin-top: 100px;margin-bottom: 20px;margin-left: 11.4%;  background-color: rgb(71, 55, 212);opacity: 50px; padding-top: 13px;">
+        @if(isEdit) {
+            <h4 style="font-size: 30px; color: white;"><b><i>Edit Product</i></b></h4>
+            
+        } @else {
+            <h4><b><i>Add Product</i></b></h4>
+        }
+    </div>
+    <form [formGroup]="ProductForm" (ngSubmit)="Save()">
+        <div class="example-container flex justify-center" >
+            
+            @if (isEdit) 
+            {
+                <mat-form-field>
+                    <mat-label>Product Id</mat-label>
+                    <input matInput type="text" formControlName="ProductId" readonly>
+                </mat-form-field>
+            }@else{
+                <mat-form-field style="display: none;">
+                    <mat-label>Product Id</mat-label>
+                    <input matInput type="text" formControlName="ProductId" readonly>
+                </mat-form-field>
+            }
+            
+            <mat-form-field>
+                <mat-label>CategoryId</mat-label>
+                <input matInput type="number" formControlName="CategoryId">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>ProductName</mat-label>
+                <input matInput type="text" formControlName="ProductName">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Description</mat-label>
+                <input matInput type="text" formControlName="Description">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Price</mat-label>
+                <input matInput type="number" formControlName="Price">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Quantity</mat-label>
+                <input matInput type="number" formControlName="Quantity">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>ReorderQty</mat-label>
+                <input matInput type="number" formControlName="ReorderQty">
+            </mat-form-field>
+
+          
+
+            @if(isEdit) {
+                <div>
+                    <button mat-raised-button color="primary" [disabled]="!ProductForm.valid">
+                        <mat-icon>update</mat-icon>Update</button>
+                </div>
+            } @else {
+                <div>
+                    <button mat-raised-button color="primary" [disabled]="!ProductForm.valid"><mat-icon>save</mat-icon>Save</button>
+                </div>
+            }
+        </div>
+    </form>
+</div> -->
+<h2 mat-dialog-title>Enter Product Name</h2>
+<form (ngSubmit)="SaveData()"> 
+<mat-dialog-content>
+  <input matInput  hidden 
+  [(ngModel)]="product.ProductId" name="ProductId">
+
+  <mat-form-field>
+    <mat-label>Category Id</mat-label>
+  <input  matInput  placeholder="CategoryId" 
+  [(ngModel)]="product.CategoryId" name="CategoryId">
+ </mat-form-field>
+ <br>
+  <mat-form-field>
+    <mat-label>Product Name</mat-label>
+    <input matInput  placeholder="Product name" 
+    [(ngModel)]="product.ProductName" name="ProductName">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput  placeholder="Description" 
+    [(ngModel)]="product.Description" name="Description">
+  </mat-form-field>
+<br>
+  <mat-form-field>
+    <mat-label>Price</mat-label>
+    <input matInput  placeholder="price" 
+    [(ngModel)]="product.Price" name="price">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Quantity</mat-label>
+    <input matInput  placeholder="Quantity" 
+    [(ngModel)]="product.Quantity" name="Quantity">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>ReorderQty</mat-label>
+    <input matInput  placeholder="ReorderQty" 
+    [(ngModel)]="product.ReorderQty" name="ReorderQty">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button type="submit" > {{buttonText}} </button>
+  <button mat-button mat-dialog-close  >Close</button>
+</mat-dialog-actions>
+</form>
+

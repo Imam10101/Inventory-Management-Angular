@@ -1,0 +1,67 @@
+<div class="container">
+    <h2 class="mt-3" *ngIf="isEditMode">Edit Purchase</h2>
+    <h2 class="mt-3" *ngIf="!isEditMode">Create Purchase</h2>
+    <form class="mt-3" (ngSubmit)="savePurchase()" #purchaseForm="ngForm">
+      <div class="mb-3">
+        <label for="VendorId" class="form-label">Vendor:</label>
+        <select id="VendorId" [(ngModel)]="purchase.VendorId" name="VendorId" class="form-control" required>
+          <option selected disabled>Select a vendor</option>
+          <option *ngFor="let vendor of vendors" [value]="vendor.VendorId">{{ vendor.VendorName }}</option>
+        </select>
+        <div *ngIf="purchaseForm.controls['VendorId']?.invalid && purchaseForm.controls['VendorId']?.touched" class="text-danger">
+          Vendor is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="purchaseDate" class="form-label">Purchase Date:</label>
+        <input id="purchaseDate" [(ngModel)]="purchase.PurchaseDate" name="purchaseDate" class="form-control" type="date" required (change)="onPurchaseDateChange()">
+        <div *ngIf="purchaseForm.controls['purchaseDate']?.invalid && purchaseForm.controls['purchaseDate']?.touched" class="text-danger">
+          Purchase date is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="totalPrice" class="form-label">Total Price:</label>
+        <input id="totalPrice" [(ngModel)]="purchase.TotalPrice" name="totalPrice" class="form-control" type="number" required>
+        <div *ngIf="purchaseForm.controls['totalPrice']?.invalid && purchaseForm.controls['totalPrice']?.touched" class="text-danger">
+          Total price is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <h3>Purchase Details</h3>
+        <button type="button" class="btn btn-primary" (click)="addPurchaseDetail()">Add Detail</button>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let detail of purchase.PurchasesDetails; let i = index">
+              <td>
+                <select [(ngModel)]="detail.PrdId" name="prdId-{{i}}" class="form-control" required>
+                  <option value="" disabled>Select a product</option>
+                  <option *ngFor="let product of products" [value]="product.ProductId">{{ product.ProductName }}</option>
+                </select>
+                <div *ngIf="purchaseForm.controls['prdId-{{i}}']?.invalid && purchaseForm.controls['prdId-{{i}}']?.touched" class="text-danger">
+                  Product is required.
+                </div>
+              </td>
+              <td>
+                <input [(ngModel)]="detail.Qty" name="qty-{{i}}" class="form-control" type="number" min="1" required>
+                <div *ngIf="purchaseForm.controls['qty-{{i}}']?.invalid && purchaseForm.controls['qty-{{i}}']?.touched" class="text-danger">
+                  Quantity must be a positive number.
+                </div>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger" (click)="removePurchaseDetail(i)">Remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="purchaseForm.invalid">Save</button>
+    </form>
+  </div>
+  
